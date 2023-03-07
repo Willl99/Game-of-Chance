@@ -2,6 +2,8 @@
 #include "Player.h"
 using namespace std;
 
+
+
     int Player::getHealth(){ //Getter functions for player attributes
         return this->health;
     }
@@ -19,6 +21,9 @@ using namespace std;
     }
     string Player::getClass(){
         return this->playerClass;
+    }
+    int Player::getMP(){
+        return this->magicPoints;
     }
 
     void Player::setHealth(int hp){ //Setter functions for player attributes

@@ -19,6 +19,7 @@ class Player{
         int getArmor();
         int getMagicApt();
         int getSTR();
+        int getMP();
         std::string getName();
         std::string getClass();
         void setHealth(int);
