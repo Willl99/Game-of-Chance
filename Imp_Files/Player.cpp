@@ -32,8 +32,11 @@ using namespace std;
     void Player::setArmor(int ar){
         this->armor = ar;
     }
-    void Player::setmagicApt(int mDMG){
+    void Player::setMagicApt(int mDMG){
         this->magicApt = mDMG;
+    }
+    void Player::setMagicPoints(int mp){
+        this->magicPoints = mp;
     }
     void Player::setSTR(int strength){
         this->STR = strength;
@@ -41,3 +44,13 @@ using namespace std;
     void Player::setClass(std::string myClass){
         this->playerClass = myClass;
     }
+    void Player::setALL(int hp, int ar, int mDMG, int mp, int strength, string Name, string myClass){ //Setter functions for player attributes
+        this->health = hp;
+        this->armor = ar;
+        this->magicApt = mDMG;
+        this->magicPoints = mp;
+        this->STR = strength;
+        this->playerClass = myClass;
+        this->name = Name;
+    }
+    

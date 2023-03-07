@@ -24,9 +24,11 @@ class Player{
         std::string getClass();
         void setHealth(int);
         void setArmor(int);
-        void setmagicApt(int);
+        void setMagicApt(int);
+        void setMagicPoints(int);
         void setSTR(int);
         void setClass(std::string myClass);
+        void setALL(int, int, int, int, int, std::string, std::string);
 };
 
 #endif
