@@ -9,17 +9,17 @@ int main(){
     cout << "Welcome to a game of chance. The odds are against you, but with some skill and good decision making, you can make it to the end." << endl;
     cout << "Would you like to begin? (Y/N)" << endl;
     getYNChoice();
-
+    Player newPlayer;
     string playerName;
     cout << "Select your class (1 or 2): \n 1. Warrior  2. Mage" << endl;
     int myClass = getTripleChoice();
     cout << "And Enter a name" << endl;
     cin >> playerName;
-    switch(myClass){
+    switch(myClass){ //Case statement for class assignment, 
         case '1': 
         {
-            Player newPlayer(100, 0, 1, 10, 3, playerName, "Warrior");
-            cout << "Warrior selected!\nYou're starting stats are:" << endl;
+            newPlayer.setALL(100, 0, 1, 10, 3, playerName, "Warrior");
+            cout << "You are " << newPlayer.getName() << " the Warrior!\nYou're starting stats are:" << endl;
             cout << "Health: " << newPlayer.getHealth() << endl;
             cout << "Magical Aptitude: " << newPlayer.getMagicApt() << endl;
             cout << "Strength: " << newPlayer.getSTR() << endl;
@@ -28,8 +28,8 @@ int main(){
         }
         case '2': 
         {
-            Player newPlayer(50, 0, 10, 1, 10, playerName, "Mage");
-            cout << "Mage selected!\nYou're starting stats are:" << endl;
+            newPlayer.setALL(50, 0, 10, 1, 10, playerName, "Mage");
+            cout << "You are " << newPlayer.getName() << " the Mage!\nYou're starting stats are:" << endl;
             cout << "Health: " << newPlayer.getHealth() << endl;
             cout << "Magical Aptitude: " << newPlayer.getMagicApt() << endl;
             cout << "Strength: " << newPlayer.getSTR() << endl;
@@ -37,6 +37,5 @@ int main(){
             break;
         }
     }
-    
-    
+
 }
