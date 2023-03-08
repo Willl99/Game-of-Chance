@@ -2,6 +2,7 @@
 #include <fstream>
 #include "InputHandler.h"
 #include "Player.h"
+#include "level.h"
 using namespace std;
 
 int main(){
@@ -39,8 +40,11 @@ int main(){
             cout << "Magic Points: " << newPlayer.getMP() << endl;
             break;
         }
-        cout << "You enter the dungeon through a small door, the noises you hear within cause you to falter for a moment, but you steel your resolve and enter"
-        
     }
+    
+    cout << "You enter the dungeon through a small door, the noises you hear within cause you to falter for a moment, but you steel your resolve and enter..." << endl;
+
+    level newLevel;
+    
 
 }
