@@ -19,6 +19,9 @@ int main(){
         case '1': 
         {
             newPlayer.setALL(100, 0, 1, 10, 3, playerName, "Warrior");
+            cout << "      /| ________________ " << endl;
+            cout << "O|===|* >________________>" << endl;
+            cout << "      \\| " << endl;                  
             cout << "You are " << newPlayer.getName() << " the Warrior!\nYou're starting stats are:" << endl;
             cout << "Health: " << newPlayer.getHealth() << endl;
             cout << "Magical Aptitude: " << newPlayer.getMagicApt() << endl;
@@ -36,6 +39,8 @@ int main(){
             cout << "Magic Points: " << newPlayer.getMP() << endl;
             break;
         }
+        cout << "You enter the dungeon through a small door, the noises you hear within cause you to falter for a moment, but you steel your resolve and enter"
+        
     }
 
 }
