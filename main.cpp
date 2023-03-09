@@ -62,12 +62,14 @@ int main(){
             switch(battleChoice){
                 case '1':
                     {
-                        enemy* targetPTR = newLevel.chooseEnemy();
-                        skeleton target = dynamic_cast<skeleton*>(targetPTR);
-                        target.reduceHP(newPlayer.getSTR());
-                        cout << target.getHP() <<endl;
-                        if (target.Killed()){
+                        enemy *target = newLevel.chooseEnemy();
+                        //enemy target = *targetPTR;
+                        cout << target->getHP() <<endl;
+                        target->reduceHP(newPlayer.getSTR());
+                        cout << target->getHP() <<endl;
+                        if (target->Killed()){
                             cout << "You killed the skeleton!" << endl;
+                            newLevel.removeEnemy();
                         }
                         break;
                     }

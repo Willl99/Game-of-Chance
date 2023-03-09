@@ -1,21 +1,19 @@
 #ifndef ENEMIES_H
 #define ENEMIES_H
-
+#include <string>
 class enemy{
     private:
-    int hp;
-    int attack;
-    int armor;
+        int hp;
+        int attack;
+        int armor;
+        std::string type;
     public:
-    void reduceHP(int);
-    bool Killed();
-    int getHP();
+        void reduceHP(int);
+        bool Killed();
+        int getHP();
+        std::string getType();
+        enemy(int);
 };
 
-class skeleton : public enemy{
-    int hp = 5;
-    int attack = 1;
-    int armor = 0;
-};
 
 #endif
