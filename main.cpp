@@ -58,9 +58,6 @@ int main(){
         while(!newLevel.checkIfCleared() || newPlayer.getHealth() == 0){ //This is the level combat loop
             int battleChoice;
             enemy * target = newLevel.chooseEnemy();
-            if (target->getType() == "Skeleton"){
-                skeleton *target = dynamic_cast<skeleton*>(target);
-            }
 
             if (playerTurn){
                 cout << "Status: " << "HP: " << newPlayer.getHealth() << endl;
@@ -91,7 +88,7 @@ int main(){
             else{
                 int damageGiven = target->doAction();
                 if (damageGiven > 0){
-                    cout << "Skeleton tries for a hit and succeeds!" << endl;
+                    cout << target->getType() << " tries for a hit and succeeds!" << endl;
                     int playerDamageTaken = target->getAttack() - newPlayer.getArmor();
                     cout << "You take " << playerDamageTaken << " points of dmg" << endl;
                     newPlayer.takeDamage(playerDamageTaken);
