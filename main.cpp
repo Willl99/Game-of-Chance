@@ -28,6 +28,7 @@ int main(){
             cout << "Magical Aptitude: " << newPlayer.getMagicApt() << endl;
             cout << "Strength: " << newPlayer.getSTR() << endl;
             cout << "Magic Points: " << newPlayer.getMP() << endl;
+            cout << endl;
             break;
         }
         case '2': 
@@ -52,6 +53,42 @@ int main(){
         cout << newLevel.getDescription() << endl;
         cout << endl;
         cout << "You enter the dungeon to see " << newLevel.getEnemyCount() << " skeletons blocking your path..." << endl;
+        cout << endl;
+        while(!newLevel.checkIfCleared() || newPlayer.getHealth() == 0){
+            int battleChoice;
+            cout << "What will you do?" << endl;
+            cout << "1. Attack   2. Die   3. Die" << endl;
+            battleChoice = getTripleChoice();
+            switch(battleChoice){
+                case '1':
+                    {
+                        enemy* targetPTR = newLevel.chooseEnemy();
+                        skeleton target = dynamic_cast<skeleton*>(targetPTR);
+                        target.reduceHP(newPlayer.getSTR());
+                        cout << target.getHP() <<endl;
+                        if (target.Killed()){
+                            cout << "You killed the skeleton!" << endl;
+                        }
+                        break;
+                    }
+                case '2':
+                    {
+                        exit(0);
+                    }
+                case '3':
+                    {
+                        exit(0);
+                    }
+            }
+
+        }
+            if (newLevel.checkIfCleared()){
+                cout << "You cleared this floor! Now, claim your treasure!" << endl;
+            }
+            else{
+                cout << "Game over." << endl;
+            }
+        
         depth++;
     }
 }

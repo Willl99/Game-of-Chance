@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <iostream>
 
+
 using namespace std::chrono;
 
 int depth = 1;
@@ -72,5 +73,27 @@ void level::generateLevel(){ //Simple level generator using rng, enemy and treas
     };
     //std::cout << (descriptions["Cave"][0]["Description1"]).asString()<< std::endl;
     this->description = (descriptions[curTypeString][0]["Description1"]).asString(); //For now this only uses the first of many possible descriptions until I feel like implementing a way to track which descriptions have been used so far.
+    
+    for(int i = 0; i < this->enemyCount; i++){
+        skeleton* mySkeleton;
+        this->enemies.push_back(mySkeleton);
+    }
     depth++; //This may not work, if rng values are weird then its probably this.
+}
+
+void level::removeEnemy(){
+    this->enemies.pop_back();
+}
+
+bool level::checkIfCleared(){
+    if (this->enemies.size() == 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+enemy* level::chooseEnemy(){
+    return this->enemies.back();
 }
