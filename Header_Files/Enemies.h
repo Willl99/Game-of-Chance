@@ -2,7 +2,7 @@
 #define ENEMIES_H
 #include <string>
 class enemy{
-    private:
+    protected:
         int hp;
         int attack;
         int armor;
@@ -12,8 +12,11 @@ class enemy{
         bool Killed();
         int getHP();
         std::string getType();
-        enemy(int);
+        enemy(int, int, int, std::string);
 };
 
-
+class skeleton : public enemy{
+    public:
+        skeleton() : enemy(5, 1, 3, "Skeleton") {}
+};
 #endif

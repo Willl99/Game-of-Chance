@@ -74,14 +74,16 @@ void level::generateLevel(){ //Simple level generator using rng, enemy and treas
     //std::cout << (descriptions["Cave"][0]["Description1"]).asString()<< std::endl;
     this->description = (descriptions[curTypeString][0]["Description1"]).asString(); //For now this only uses the first of many possible descriptions until I feel like implementing a way to track which descriptions have been used so far.
     for(int i = 0; i < this->enemyCount; i++){
-        enemy * myEnemy = new enemy(1);
+        enemy * myEnemy = new skeleton();
         this->enemies.push_back(myEnemy);
     }
     depth++; //This may not work, if rng values are weird then its probably this.
 }
 
 void level::removeEnemy(){
+    enemy * enemyToDelete = this->enemies.back();
     this->enemies.pop_back();
+    delete enemyToDelete;
 }
 
 bool level::checkIfCleared(){
