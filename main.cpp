@@ -92,8 +92,12 @@ int main(){
                 int damageGiven = target->doAction();
                 if (damageGiven > 0){
                     cout << "Skeleton tries for a hit and succeeds!" << endl;
-                    cout << "You take " << target->getAttack() - newPlayer.getArmor() << " points of dmg" << endl;
-                    newPlayer.takeDamage(target->getAttack());
+                    int playerDamageTaken = target->getAttack() - newPlayer.getArmor();
+                    cout << "You take " << playerDamageTaken << " points of dmg" << endl;
+                    newPlayer.takeDamage(playerDamageTaken);
+                }
+                else{
+                    cout << "Skeleton tries for a hit and fails!" << endl;
                 }
                 playerTurn = true;
             }
