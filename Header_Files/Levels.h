@@ -11,8 +11,9 @@ class level{
         int getEnemyCount();
         int getTreasure();
         int getType();
+        std::string getDescription();
         void setLevelAttributes(int, int, int, std::string); //Only need a single method for setting attributes since they're set at the same time
-        void generateLevel(level);
+        void generateLevel();
 };
 
 #endif
