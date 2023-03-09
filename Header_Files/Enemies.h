@@ -15,7 +15,7 @@ class enemy{
         std::string getType();
         enemy(int, int, int, std::string);
         virtual ~enemy() {delete this;}
-        virtual int doAction() {}
+        virtual int doAction() {return -1;}
 
 };
 

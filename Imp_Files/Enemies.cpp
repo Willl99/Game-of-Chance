@@ -41,7 +41,13 @@ int skeleton::doAction(){
 
     srand(seed);
     float hitChance = static_cast<float>(rand() / static_cast <float> (RAND_MAX));
-    return this->attack * (hitChance + 0.7); //This should mean that the skeleton has a 70% chance to land a hit as if hitchance > .5 it should return the attack dmg amount
+    if (hitChance >= .3){
+        return this->attack; //This should mean that the skeleton has a 70% chance to land a hit as if hitchance > .5 it should return the attack dmg amount
+    }
+    else{
+        return 0;
+    }
+    
 }
 
 /*enemy::~enemy(){
