@@ -63,12 +63,9 @@ int main(){
                 case '1':
                     {
                         enemy *target = newLevel.chooseEnemy();
-                        //enemy target = *targetPTR;
-                        cout << target->getHP() <<endl;
                         target->reduceHP(newPlayer.getSTR());
-                        cout << target->getHP() <<endl;
                         if (target->Killed()){
-                            cout << "You killed the skeleton!" << endl;
+                            cout << "You killed the " << target->getType() << "!" << endl;
                             newLevel.removeEnemy();
                         }
                         break;
