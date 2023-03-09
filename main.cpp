@@ -48,38 +48,45 @@ int main(){
     int depth = 1;
     while (depth < 2){ //This is the main game loop 
         level newLevel;
+        bool playerTurn = true;
         newLevel.generateLevel();
 
         cout << newLevel.getDescription() << endl;
         cout << endl;
         cout << "You enter the dungeon to see " << newLevel.getEnemyCount() << " skeletons blocking your path..." << endl;
         cout << endl;
-        while(!newLevel.checkIfCleared() || newPlayer.getHealth() == 0){
+        while(!newLevel.checkIfCleared() || newPlayer.getHealth() == 0){ //This is the level combat loop
             int battleChoice;
-            cout << "What will you do?" << endl;
-            cout << "1. Attack   2. Die   3. Die" << endl;
-            battleChoice = getTripleChoice();
-            switch(battleChoice){
-                case '1':
-                    {
-                        enemy *target = newLevel.chooseEnemy();
-                        target->reduceHP(newPlayer.getSTR());
-                        if (target->Killed()){
-                            cout << "You killed the " << target->getType() << "!" << endl;
-                            newLevel.removeEnemy();
+            if (playerTurn){
+                cout << "What will you do?" << endl;
+                cout << "1. Attack   2. Die   3. Die" << endl;
+                battleChoice = getTripleChoice();
+                switch(battleChoice){
+                    case '1':
+                        {
+                            enemy *target = newLevel.chooseEnemy();
+                            target->reduceHP(newPlayer.getSTR());
+                            if (target->Killed()){
+                                cout << "You killed the " << target->getType() << "!" << endl;
+                                newLevel.removeEnemy();
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case '2':
-                    {
-                        exit(0);
-                    }
-                case '3':
-                    {
-                        exit(0);
-                    }
+                    case '2':
+                        {
+                            exit(0);
+                        }
+                    case '3':
+                        {
+                            exit(0);
+                        }
+                }
+                playerTurn = false;
             }
-
+            else{
+                //Enemy logic
+                playerTurn = true;
+            }
         }
             if (newLevel.checkIfCleared()){
                 cout << "You cleared this floor! Now, claim your treasure!" << endl;
