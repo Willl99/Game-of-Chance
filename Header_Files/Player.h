@@ -29,6 +29,7 @@ class Player{
         void setSTR(int);
         void setClass(std::string myClass);
         void setALL(int, int, int, int, int, std::string, std::string);
+        void takeDamage(int);
 };
 
 #endif

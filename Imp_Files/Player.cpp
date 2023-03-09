@@ -53,4 +53,8 @@ using namespace std;
         this->playerClass = myClass;
         this->name = Name;
     }
+
+    void Player::takeDamage(int attackPointsRecieved){
+        this->health = this->health - (attackPointsRecieved - this->armor);
+    }
     

@@ -57,14 +57,19 @@ int main(){
         cout << endl;
         while(!newLevel.checkIfCleared() || newPlayer.getHealth() == 0){ //This is the level combat loop
             int battleChoice;
+            enemy * target = newLevel.chooseEnemy();
+            if (target->getType() == "Skeleton"){
+                skeleton *target = dynamic_cast<skeleton*>(target);
+            }
+
             if (playerTurn){
+                cout << "Status: " << "HP: " << newPlayer.getHealth() << endl;
                 cout << "What will you do?" << endl;
-                cout << "1. Attack   2. Die   3. Die" << endl;
+                cout << "1. Attack   2. Wait   3. Die" << endl;
                 battleChoice = getTripleChoice();
                 switch(battleChoice){
                     case '1':
                         {
-                            enemy *target = newLevel.chooseEnemy();
                             target->reduceHP(newPlayer.getSTR());
                             if (target->Killed()){
                                 cout << "You killed the " << target->getType() << "!" << endl;
@@ -74,7 +79,7 @@ int main(){
                         }
                     case '2':
                         {
-                            exit(0);
+                            break;
                         }
                     case '3':
                         {
@@ -84,7 +89,12 @@ int main(){
                 playerTurn = false;
             }
             else{
-                //Enemy logic
+                int damageGiven = target->doAction();
+                if (damageGiven > 0){
+                    cout << "Skeleton tries for a hit and succeeds!" << endl;
+                    cout << "You take " << target->getAttack() - newPlayer.getArmor() << " points of dmg" << endl;
+                    newPlayer.takeDamage(target->getAttack());
+                }
                 playerTurn = true;
             }
         }

@@ -11,12 +11,17 @@ class enemy{
         void reduceHP(int);
         bool Killed();
         int getHP();
+        int getAttack();
         std::string getType();
         enemy(int, int, int, std::string);
+        virtual ~enemy() {delete this;}
+        virtual int doAction() {}
+
 };
 
 class skeleton : public enemy{
     public:
-        skeleton() : enemy(5, 1, 3, "Skeleton") {}
+        skeleton() : enemy(5, 10, 3, "Skeleton") {}
+        int doAction();
 };
 #endif

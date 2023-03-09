@@ -80,9 +80,7 @@ void level::generateLevel(){ //Simple level generator using rng, enemy and treas
 }
 
 void level::removeEnemy(){
-    enemy * enemyToDelete = this->enemies.back();
     this->enemies.pop_back();
-    delete enemyToDelete;
 }
 
 bool level::checkIfCleared(){
