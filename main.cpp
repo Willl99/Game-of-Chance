@@ -2,7 +2,7 @@
 #include <fstream>
 #include "InputHandler.h"
 #include "Player.h"
-#include "level.h"
+#include "Levels.h"
 using namespace std;
 
 int main(){
@@ -38,13 +38,20 @@ int main(){
             cout << "Magical Aptitude: " << newPlayer.getMagicApt() << endl;
             cout << "Strength: " << newPlayer.getSTR() << endl;
             cout << "Magic Points: " << newPlayer.getMP() << endl;
+            cout << endl;
             break;
         }
     }
     
     cout << "You enter the dungeon through a small door, the noises you hear within cause you to falter for a moment, but you steel your resolve and enter..." << endl;
+    int depth = 1;
+    while (depth < 2){ //This is the main game loop 
+        level newLevel;
+        newLevel.generateLevel();
 
-    level newLevel;
-    
-
+        cout << newLevel.getDescription() << endl;
+        cout << endl;
+        cout << "You enter the dungeon to see " << newLevel.getEnemyCount() << " skeletons blocking your path..." << endl;
+        depth++;
+    }
 }
