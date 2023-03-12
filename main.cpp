@@ -108,6 +108,12 @@ int main(){
         }
             if (newLevel.checkIfCleared()){
                 cout << "You cleared this floor! Now, claim your treasure!" << endl;
+                while (newLevel.getTreasureCount() > 0){
+                    TreasureChest* chosenChest = newLevel.chooseChest();
+                    cout << "You found a " << chosenChest->getChestName() << "!" << endl;
+                    cout << "You got " << (chosenChest)->getGoldCount() << " gold!" << endl;
+                    newLevel.removeChest();
+                }
             }
             else{
                 cout << "Game over." << endl;

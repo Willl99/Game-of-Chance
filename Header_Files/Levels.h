@@ -3,23 +3,28 @@
 #include <string>
 #include <vector>
 #include "Enemies.h"
+#include "Treasure.h"
 class level{
     private:
         int enemyCount;
-        int treasureChestCount;
         int type;
         std::string description;
         std::vector<enemy*> enemies;
+        std::vector<TreasureChest*> chests;
     public:
         int getEnemyCount();
-        int getTreasure();
+        int getTreasureCount();
         int getType();
-        std::string getDescription();
-        void setLevelAttributes(int, int, int, std::string); //Only need a single method for setting attributes since they're set at the same time
+        virtual std::string getDescription();
+        void setLevelAttributes(int, int, std::string); //Only need a single method for setting attributes since they're set at the same time
         void generateLevel();
         bool checkIfCleared();
         void removeEnemy();
         enemy* chooseEnemy();
+        TreasureChest* chooseChest();
+        void removeChest();
+        virtual ~level() {}
 };
+
 
 #endif

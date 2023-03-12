@@ -12,17 +12,16 @@ int level::getEnemyCount(){
     return this->enemyCount;
 }
 
-int level::getTreasure(){
-    return this->treasureChestCount;
+int level::getTreasureCount(){
+    return this->chests.size();
 }
 
 int level::getType(){
     return this->type;
 }
 
-void level::setLevelAttributes(int enemies, int chests, int curType, std::string desc){
+void level::setLevelAttributes(int enemies, int curType, std::string desc){
     this->enemyCount = enemies;
-    this->treasureChestCount = chests;
     this->type = curType;
     this->description = desc;
 }
@@ -49,7 +48,10 @@ void level::generateLevel(){ //Simple level generator using rng, enemy and treas
     desc_file >> descriptions;
     
     this->enemyCount = enemiesGen;
-    this->treasureChestCount = treasureCount;
+    for (int i = 0; i < treasureCount; i++){
+        TreasureChest * myChest = new TreasureChest(depth);
+        this->chests.push_back(myChest);
+    }
     this->type = curType;
     switch(curType){
         case 1:
@@ -86,4 +88,12 @@ bool level::checkIfCleared(){
 
 enemy* level::chooseEnemy(){
     return this->enemies.back();
+}
+
+TreasureChest* level::chooseChest(){
+    return this->chests.back();
+}
+
+void level::removeChest(){
+    chests.pop_back();
 }

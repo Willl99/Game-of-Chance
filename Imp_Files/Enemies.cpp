@@ -36,7 +36,7 @@ enemy::enemy(int health, int attackPoints, int armorPoints, std::string typeOfEn
 
 int skeleton::doAction(){
 
-    float hitChance = static_cast<float>(rand() / static_cast <float> (RAND_MAX)); //This should mean that the skeleton has a 70% chance to land a hit as if hitchance > .5 it should return the attack dmg amount
+    float hitChance = static_cast<float>(rand() / static_cast <float> (RAND_MAX)); //Generate a random number between 0 and 1
     if (hitChance >= .3){
         return this->attack; 
     }
