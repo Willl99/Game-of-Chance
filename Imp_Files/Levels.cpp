@@ -1,13 +1,10 @@
 #include "Levels.h"
-#include <chrono>
 #include <sysinfoapi.h>
 #include <fstream>
 #include <json.h>
-#include <iomanip>
+
 #include <iostream>
 
-
-using namespace std::chrono;
 
 int depth = 1;
 
@@ -42,12 +39,7 @@ void level::generateLevel(){ //Simple level generator using rng, enemy and treas
     std::string desc;
     std::string curTypeString;
 
-    uint64_t seed1 = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
-    uint64_t seed2 = milliseconds(GetTickCount64()).count();
-
-    srand(seed1);
     enemiesGen = rand() % depth + 1;
-    srand(seed2);
     treasureCount = rand() % depth + 1;
     srand(reinterpret_cast<uint64_t>(((void*)&memTaker))); //I THINK this is using memory location for a random seed...I hope
     curType = ((rand() % 100) * depth) % 2 + 1; //Type of level is determined partially by depth, as some areas will be harder, 1 = cave, 2 = dungeon

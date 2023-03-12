@@ -3,13 +3,20 @@
 #include "InputHandler.h"
 #include "Player.h"
 #include "Levels.h"
+#include <chrono>
+
 using namespace std;
+using namespace chrono;
+
+
 
 int main(){
     char userChoiceStart;
     cout << "Welcome to a game of chance. The odds are against you, but with some skill and good decision making, you can make it to the end." << endl;
     cout << "Would you like to begin? (Y/N)" << endl;
     getYNChoice();
+    uint64_t seed = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count(); //These seeds are crappy for fast combat, replace with something else thats more random
+    srand(seed);
     Player newPlayer;
     string playerName;
     cout << "Select your class (1 or 2): \n 1. Warrior  2. Mage" << endl;
